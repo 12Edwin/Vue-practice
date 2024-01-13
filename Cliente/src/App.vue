@@ -1,16 +1,18 @@
 <script setup>
+import { faAddressCard, faUserCircle } from '@fortawesome/free-regular-svg-icons';
+
 </script>
 
 <template>
   <div id="app">
     <header>
-      <b-button pill v-b-toggle.sidebar-variant></b-button>
-      <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="50" height="50" />
-      
+      <b-button variant="info" class="mx-2" pill v-b-toggle.sidebar-1><font-awesome-icon :icon="faUserCircle"/></b-button>
+      <img class="mx-2" alt="Vue logo" src="./assets/logo.svg" width="50" height="50" />
+      <h3 class="mx-2">Cliente</h3>
     </header>
 
     <div class="main">
-      <b-sidebar id="sidebar-variant" class="sidebar" title="Sidebar" bg-variant="dark" text-variant="light" shadow>
+      <b-sidebar id="sidebar-1" class="sidebar" title="Sidebar" shadow>
       <div class="px-3 py-2">
         <p>
           Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
@@ -41,7 +43,6 @@
   }
 
   .sidebar{
-    width: 18vw;
     height: 92vh;
     position: relative;
   }
@@ -51,6 +52,6 @@
 
 <style>
   .b-sidebar{
-    position: relative;
+    position: relative !important;
   }
 </style>
