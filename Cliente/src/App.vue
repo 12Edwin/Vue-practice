@@ -6,26 +6,68 @@ import { faAddressCard, faUserCircle } from '@fortawesome/free-regular-svg-icons
 <template>
   <div id="app">
     <header>
-      <b-button variant="info" class="mx-2" pill v-b-toggle.sidebar-1><font-awesome-icon :icon="faUserCircle"/></b-button>
       <img class="mx-2" alt="Vue logo" src="./assets/logo.svg" width="50" height="50" />
-      <h3 class="mx-2">Cliente</h3>
+      <b-button variant="info" class="mx-2" pill v-b-toggle.sidebar-1><font-awesome-icon :icon="faUserCircle"/></b-button>
+      
+      <b-breadcrumb :items="items" class="mx-2 mb-0"></b-breadcrumb>
     </header>
 
     <div class="main">
       <b-sidebar id="sidebar-1" class="sidebar" title="Sidebar" shadow>
       <div class="px-3 py-2">
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-          in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        </p>
-        <b-img src="https://picsum.photos/500/500/?image=54" fluid thumbnail></b-img>
+        <b-nav-item >
+          <b-link :to="{ name: 'inicio' }">Opcion 1</b-link>
+        </b-nav-item>
+
+        <b-nav-item >
+          <b-link :to="{ name: 'component1' }">Opcion 1</b-link>
+        </b-nav-item>
+
+        <b-nav-item >
+          <b-link :to="{ name: 'component2' }">Opcion 2</b-link>
+        </b-nav-item>
       </div>
     </b-sidebar>
       <div class="content">
+        <router-view></router-view>
       </div> 
     </div>
   </div>
 </template>
+
+<script >
+export default {
+    data(){
+        return{
+            items: [
+                {
+                text: "Inicio",
+                href: "inicio",
+                name:""
+                },
+                {
+                text: "Primero",
+                href: "component1",
+                name:""
+                },
+                {
+                text: "Segundo",
+                href: "component2",
+                },
+            ],
+        }
+    },
+    computed:{
+
+    },
+    methods:{
+
+    },
+    watch:{
+
+    }
+}
+</script>
 
 <style scoped>
   header{
