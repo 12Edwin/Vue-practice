@@ -1,7 +1,10 @@
 <template>
   <div>
-        <h1>Inicio</h1>
-        <b-breadcrumb :items="items" class="mx-2 mb-0"></b-breadcrumb>
+        <h1>Tienda de juguetes</h1>
+        <b-breadcrumb class="mx-2 mb-0">
+            <b-breadcrumb-item v-for="(item, i) in items" @click="changeActive(i)" :key="i" :active="item.active" :href="item.href">{{item.text}}</b-breadcrumb-item>
+        </b-breadcrumb>
+        <h4>{{ currentItem }}</h4>
     </div>
 </template>
 
@@ -9,9 +12,14 @@
 export default {
 
     methods:{
-        change(value){
+        changeActive(value){
+            this.items.map(i =>{
+                i.active = false
+            })
             this.items[value].active = true
+            this.currentItem = this.items[value].text
         }
+
     },
     data(){
         return{
@@ -20,19 +28,20 @@ export default {
                 text: "Inicio",
                 href: "#1",
                 name:"inicio",
-                onclick: () => this.change(0)
+                active: true
                 },
                 {
-                text: "Primero",
+                text: "Electrónicos",
                 href: "#2",
-                name:"component1"
+                active: false
                 },
                 {
-                text: "Segundo",
+                text: "Juegos de video",
                 href: "#3",
-                name:'component2'
+                active: false
                 },
             ],
+            currentItem: 'Inicio'
         }
     }
 }
