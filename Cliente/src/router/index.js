@@ -6,41 +6,38 @@ Vue.use(VueRouter);
 const routes = [
   
   //la ruta base
-    
-    {
-        path: '/',
-        redirect: {name: 'inicio'},
-    },
-    {
-        path: '/',
-        component: {
-            render(c) {
-                return c('router-view');
-            },
-        }, 
-        children:[
-            {
-                name: 'inicio',
-                path: '/',
-                component: () => import ('../components/Inicio.vue')
-            },
-            {
-                path: '/component1',
-                name: 'component1',
-                component: () => import('../components/Component1.vue')
-            },
-            {
-                path: '/component2',
-                name: 'component2',
-                component: () => import('../components/Component2.vue')
-            },
-            {
-                path: '/component3',
-                name: 'component3',
-                component: () => import('../components/Component3.vue')
-            }
-        ]
-    },
+  {
+    path: '/',
+    component:()=> import('../components/LandPage.vue')
+},
+{
+    path: '/formulario',
+    name:'formulario',
+    component: () => import('../components/Formulario.vue')
+},
+{
+    path:'*',
+    component:()=> import('../views/ErrorPages/Error404.vue')
+},
+{
+    path: '/inicio',
+    component: ()=> import ('../views/Index.vue'),
+
+    //Los componentes que se renderizan en router-vue
+    children: [
+        {
+            path: '/',
+            name: 'inicio',
+            component: () => import('../components/Inicio.vue')
+        },
+        {
+            path: '/main',
+            name: 'main',
+            component: () => import('../components/Main.vue')
+        },
+        
+    ]
+}
     
   ]
 
