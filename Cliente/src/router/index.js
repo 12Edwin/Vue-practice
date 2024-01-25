@@ -16,6 +16,11 @@ const routes = [
     component: () => import('../components/Formulario.vue')
 },
 {
+    path: '/person',
+    name: 'person',
+    component: () => import('../components/Person.vue')
+},
+{
     path:'*',
     component:()=> import('../views/ErrorPages/Error404.vue')
 },
@@ -30,6 +35,7 @@ const routes = [
             name: 'inicio',
             component: () => import('../components/Inicio.vue')
         },
+        
         {
             path: '/main',
             name: 'main',
