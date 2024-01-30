@@ -3,7 +3,7 @@
         <b-card class="p-2">
             <h4>Personas registradas</h4>
             <div class="overflow-auto">
-                <b-table id="my-table" :items="people" :per-page="perPage" :current-page="currentPage" small></b-table>
+                <b-table :fields="fields" id="my-table" :items="people" :per-page="perPage" :current-page="currentPage" small></b-table>
                 <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" aria-controls="my-table"></b-pagination>
                 <p class="mt-3">Current Page: {{ currentPage }}</p>
             </div>
@@ -19,7 +19,11 @@ export default {
         return {
             perPage: '3',
             currentPage: 1,
-            people: []
+            people: [],
+            fields:[
+                {key:"name", label:"Nombre", sortable: true},
+                {key:"firstname", label:"Primer nombre", sortable: true}
+            ]
         }
     },
     computed: {
