@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/personas/page';
+const API_URL = 'http://localhost:8081/api/personas/page';
 
-const obtenerPersonasPaginadas = async (page, size) => {
+const obtenerPersonasPaginadas = async (page, size, filter) => {
   try {
-    const response = await axios.post(API_URL, {
-      params: { page, size }
+    const response = await axios.get(API_URL, {
+      params: { filter, page, size, sort:'name' }
     });
 
     return response.data;
